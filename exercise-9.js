@@ -1,34 +1,37 @@
 function checkAB(num) {
-    // you can only write your code here!
-    var arrNum =[];
-    for( var i=0 ; i<num.length ;i++ ){
-        arrNum.push(num[i]);
+  // you can only write your code here!
+  var arrNum = [];
+  var posisiA = -1;
+  var posisiB = -1;
+  var jarak = 0;
+  //masukkin num ke 
+  for (var i = 0; i < num.length; i++) {
+    arrNum.push(num[i]);
+  }
+  for (var p = 0; p < arrNum.length; p++) {
+    // console.log('loop')
+    if (arrNum[p] === 'b') {
+      posisiB = p;
     }
-    for(let p = 0; p < arr.length; p++) {
-        if (arr[p] === 'o') {
-          positionO = p + 1
-        } else if (arr[p] === 'x') {
-          if (!positionO || !positionX) {
-            positionX = p + 1
-          } else if (Math.abs(positionO - positionX) > Math.abs(positionO - arr[p])) {
-              positionX = p + 1
-          }
-        }
+    if (arrNum[p] === 'a') {
+      if (posisiA > p) {
+        posisiA = p;
       }
-      if (positionO && positionX) {
-        return Math.abs(positionO - positionX)
-      } else {
-        return 0
-      }
-    return arrNum;
-}
+    }
+  }
+  jarak = posisiA - posisiB;
+  if (posisiB === -1 || Math.abs(jarak) < 3) {
+    return false;
+  }
+  return jarak;
 
+}
 // TEST CASES
 console.log(checkAB('lane borrowed')); // true
-// console.log(checkAB('i am sick')); // false
-// console.log(checkAB('you are boring')); // true
-// console.log(checkAB('barbarian')); // true
-// console.log(checkAB('bacon and meat')); // false
+console.log(checkAB('i am sick')); // false
+console.log(checkAB('you are boring')); // true
+console.log(checkAB('barbarian')); // true
+console.log(checkAB('bacon and meat')); // false
 
 /**
  * Diberikan sebuah function checkAB(str) yang menerima satu parameter berupa string.
@@ -36,32 +39,3 @@ console.log(checkAB('lane borrowed')); // true
  * yang memiliki jarak 3 karakter lain minimal satu kali. Jika tidak ditemukan sama sekali,
  * kembalikan nilai false. Jarak bisa dari a ke b, atau b ke a.
  */
-
-
- /**function targetTerdekat(arr) {
-    // you can only write your code here!
-    let positionX, positionO, jarak
-    
-    for(let i = 0; i < arr.length; i++) {
-      if (arr[i] === 'o') {
-        positionO = i + 1
-      } else if (arr[i] === 'x') {
-        if (!positionO || !positionX) {
-          positionX = i + 1
-        } else if (Math.abs(positionO - positionX) > Math.abs(positionO - arr[i])) {
-            positionX = i + 1
-        }
-      }
-    }
-    if (positionO && positionX) {
-      return Math.abs(positionO - positionX)
-    } else {
-      return 0
-    }
-}
-console.log(targetTerdekat(['', '', 'o', '', '', 'x', '', 'x'])); // 3
-console.log(targetTerdekat(['o', '', '', '', 'x', 'x', 'x'])); // 4
-console.log(targetTerdekat(['x', '', '', '', 'x', 'x', 'o', ''])); // 1
-console.log(targetTerdekat(['', '', 'o', ''])); // 0
- */
-
