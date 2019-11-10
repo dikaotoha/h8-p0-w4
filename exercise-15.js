@@ -1,5 +1,21 @@
 function highestScore(students) {
     // Code disini
+    var result = {};
+
+    for (var i = 0; i < students.length; i++) {
+        if (result[students[i]['class']] === undefined) {
+            result[students[i]['class']] = {
+                name: '',
+                score: 0,
+            }
+        }
+        if (result[students[i]['class']]['score'] < students[i]['score']) {
+            result[students[i]['class']]['score'] = students[i]['score'];
+            result[students[i]['class']]['name'] = students[i]['name'];
+        }
+    }
+
+    return result;
 }
 
 // TEST CASE
